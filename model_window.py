@@ -1,3 +1,4 @@
+# This creates a window where frame can be switched
 from tkinter import *
 
 def front_window(self):
