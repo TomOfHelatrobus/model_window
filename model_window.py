@@ -1,8 +1,8 @@
 # This creates a window where frame can be switched
 from tkinter import *
 
-def front_window(self):
-    if self != "none": self.destroy()
+def front_window(frame):
+    if frame != "none": frame.destroy()
     F = Frame(root)
     F.pack(fill=BOTH, side=LEFT)
     buttons = Canvas(F)  # button bar
@@ -29,17 +29,17 @@ def rear_window(wd):
     wd[2].config(scrollregion=wd[2].bbox("all"))
     mainloop()
 
-def first_window(self):
+def first_window(frame):
     root.title("#1")
-    wd = front_window(self)  # get window objects 0=F,1=S,2=C,3=FF,4=buttons
+    wd = front_window(frame)  # get window objects 0=F,1=S,2=C,3=FF,4=buttons
     Label(wd[3],text="hello there from the first window").pack()
     Button(wd[4], text="second window", width=20, anchor="w", command=lambda: second_window(wd[0])).pack(side=LEFT)
     Button(wd[4], text="Quit", width=20, anchor="w", command=lambda: root.destroy()).pack(side=LEFT)
     rear_window(wd)
 
-def second_window(self):
+def second_window(frame):
     root.title("#2")
-    wd = front_window(self)  # get window objects 0=F,1=S,2=C,3=FF,4=buttons
+    wd = front_window(frame)  # get window objects 0=F,1=S,2=C,3=FF,4=buttons
     Label(wd[3],text="hello there from the second window").pack()
     Button(wd[4], text="first window", width=20, anchor="w", command=lambda: first_window(wd[0])).pack(side=LEFT)
     Button(wd[4], text="Quit", width=20, anchor="w", command=lambda: root.destroy()).pack(side=LEFT)
