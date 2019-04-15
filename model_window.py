@@ -19,6 +19,8 @@ def front_window(frame):
     elif sys.platform == "linux":
         C.bind_all('<Button-4>', lambda event: C.yview('scroll',-1,'units'))
         C.bind_all('<Button-5>', lambda event: C.yview('scroll',1,'units'))
+    elif sys.platform == "darwin":
+        C.bind_all('<MouseWheel>', lambda event: C.yview_scroll(int(event.delta))) # Maybe: this is a guess
 # create the frame inside the canvas
     FF = Frame(C)
     C.create_window((0, 0), window=FF, anchor=NW)
